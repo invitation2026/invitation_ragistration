@@ -5,35 +5,344 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Official Gun Registration - Laddu Mishra</title>
     <style>
-        body { font-family: 'Times New Roman', Times, serif; max-width: 800px; margin: 20px auto; padding: 20px; border: 2px solid #000; background: #fff; color: #000; }
-        .header { text-align: center; border-bottom: 3px double #000; padding-bottom: 10px; margin-bottom: 20px; }
-        .header h1 { margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 1px; }
-        .header h2 { margin: 5px 0; font-size: 16px; font-weight: normal; }
-        .header p { margin: 2px 0; font-size: 14px; }
-        .reg-info { display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 20px; font-size: 14px; }
-        .section { margin-bottom: 20px; }
-        .section h3 { background: #f0f0f0; padding: 5px 10px; border: 1px solid #000; font-size: 14px; margin: 0 0 10px 0; text-transform: uppercase; }
-        .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 20px; font-size: 14px; }
-        .details-grid div { display: flex; }
-        .label { font-weight: bold; min-width: 140px; }
-        .value { border-bottom: 1px dotted #000; flex: 1; padding-left: 5px; min-height: 18px;}
-        .full-width { grid-column: 1 / -1; }
-        .safety-rules { font-size: 13px; line-height: 1.5; padding: 10px; border: 1px solid #ccc; background: #fafafa; }
-        .safety-rules ul { margin: 5px 0; padding-left: 20px; }
-        .signatures { display: flex; justify-content: space-between; margin-top: 40px; font-size: 14px; }
-        .sig-box { text-align: center; width: 30%; }
-        .sig-line { border-top: 1px solid #000; margin-top: 50px; padding-top: 5px; }
+        * {
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Times New Roman', Times, serif; 
+            max-width: 800px; 
+            margin: 20px auto; 
+            padding: 20px; 
+            border: 2px solid #000; 
+            background: #fff; 
+            color: #000; 
+        }
+        
+        .header { 
+            text-align: center; 
+            border-bottom: 3px double #000; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+        }
+        
+        .header h1 { 
+            margin: 0; 
+            font-size: 20px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+        }
+        
+        .header h2 { 
+            margin: 5px 0; 
+            font-size: 14px; 
+            font-weight: normal; 
+        }
+        
+        .header p { 
+            margin: 2px 0; 
+            font-size: 12px; 
+        }
+        
+        .reg-info { 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: bold; 
+            margin-bottom: 20px; 
+            font-size: 13px; 
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .section { 
+            margin-bottom: 20px; 
+        }
+        
+        .section h3 { 
+            background: #f0f0f0; 
+            padding: 8px 10px; 
+            border: 1px solid #000; 
+            font-size: 13px; 
+            margin: 0 0 10px 0; 
+            text-transform: uppercase; 
+        }
+        
+        .details-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 8px 20px; 
+            font-size: 13px; 
+        }
+        
+        .details-grid div { 
+            display: flex; 
+            flex-direction: column;
+        }
+        
+        .label { 
+            font-weight: bold; 
+            margin-bottom: 3px;
+        }
+        
+        .value { 
+            border-bottom: 1px dotted #000; 
+            padding: 5px 0; 
+            min-height: 20px;
+            word-wrap: break-word;
+        }
+        
+        .full-width { 
+            grid-column: 1 / -1; 
+        }
+        
+        .safety-rules { 
+            font-size: 12px; 
+            line-height: 1.6; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            background: #fafafa; 
+        }
+        
+        .safety-rules ul { 
+            margin: 5px 0; 
+            padding-left: 20px; 
+        }
+        
+        .safety-rules li {
+            margin-bottom: 5px;
+        }
+        
+        .signatures { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-top: 40px; 
+            font-size: 13px; 
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .sig-box { 
+            text-align: center; 
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .sig-line { 
+            border-top: 1px solid #000; 
+            margin-top: 50px; 
+            padding-top: 5px; 
+        }
         
         /* OFFICIAL STAMP CSS */
-        .stamp-container { position: relative; width: 150px; height: 150px; margin: 20px auto; }
-        .stamp { width: 140px; height: 140px; border: 4px double #d32f2f; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #d32f2f; font-weight: bold; text-align: center; transform: rotate(-15deg); opacity: 0.8; font-size: 12px; line-height: 1.2; padding: 10px;}
-        .stamp .inner-circle { border: 2px solid #d32f2f; border-radius: 50%; width: 110px; height: 110px; display: flex; align-items: center; justify-content: center; flex-direction: column;}
+        .stamp-container { 
+            position: relative; 
+            width: 120px; 
+            height: 120px; 
+            margin: 20px auto; 
+        }
+        
+        .stamp { 
+            width: 110px; 
+            height: 110px; 
+            border: 3px double #d32f2f; 
+            border-radius: 50%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            color: #d32f2f; 
+            font-weight: bold; 
+            text-align: center; 
+            transform: rotate(-15deg); 
+            opacity: 0.8; 
+            font-size: 10px; 
+            line-height: 1.3; 
+            padding: 8px;
+        }
+        
+        .stamp .inner-circle { 
+            border: 2px solid #d32f2f; 
+            border-radius: 50%; 
+            width: 90px; 
+            height: 90px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-direction: column;
+        }
+        
+        .print-btn { 
+            padding: 12px 20px; 
+            background: #007BFF; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+            font-size: 14px; 
+            border-radius: 5px; 
+            display: block; 
+            margin: 20px auto; 
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .print-btn:hover {
+            background: #0056b3;
+        }
+        
+        /* TABLET RESPONSIVE */
+        @media screen and (max-width: 768px) {
+            body {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 18px;
+            }
+            
+            .header h2 {
+                font-size: 13px;
+            }
+            
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .signatures {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .sig-box {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media screen and (max-width: 480px) {
+            body {
+                margin: 5px;
+                padding: 10px;
+                border-width: 1px;
+            }
+            
+            .header h1 {
+                font-size: 15px;
+                letter-spacing: 0.5px;
+            }
+            
+            .header h2 {
+                font-size: 11px;
+            }
+            
+            .header p {
+                font-size: 10px;
+            }
+            
+            .reg-info {
+                font-size: 11px;
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .section h3 {
+                font-size: 11px;
+                padding: 6px 8px;
+            }
+            
+            .details-grid {
+                font-size: 11px;
+            }
+            
+            .label {
+                font-size: 11px;
+            }
+            
+            .value {
+                font-size: 11px;
+                padding: 4px 0;
+            }
+            
+            .safety-rules {
+                font-size: 10px;
+                padding: 8px;
+            }
+            
+            .safety-rules ul {
+                padding-left: 15px;
+            }
+            
+            .signatures {
+                font-size: 11px;
+                margin-top: 30px;
+            }
+            
+            .sig-line {
+                margin-top: 40px;
+            }
+            
+            .stamp-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .stamp {
+                width: 90px;
+                height: 90px;
+                font-size: 9px;
+                border-width: 2px;
+            }
+            
+            .stamp .inner-circle {
+                width: 75px;
+                height: 75px;
+                border-width: 1.5px;
+            }
+            
+            .print-btn {
+                font-size: 13px;
+                padding: 10px 15px;
+            }
+        }
+        
+        /* VERY SMALL MOBILE */
+        @media screen and (max-width: 360px) {
+            .header h1 {
+                font-size: 13px;
+            }
+            
+            .header h2 {
+                font-size: 10px;
+            }
+            
+            .section h3 {
+                font-size: 10px;
+            }
+            
+            .details-grid {
+                font-size: 10px;
+            }
+            
+            .safety-rules {
+                font-size: 9px;
+            }
+        }
         
         @media print {
-            body { border: none; margin: 0; padding: 15px; }
-            .no-print { display: none; }
+            body { 
+                border: none; 
+                margin: 0; 
+                padding: 15px; 
+            }
+            .no-print { 
+                display: none; 
+            }
+            .print-btn {
+                display: none;
+            }
         }
-        .print-btn { padding: 10px 20px; background: #007BFF; color: white; border: none; cursor: pointer; font-size: 16px; border-radius: 5px; display: block; margin: 20px auto; }
     </style>
 </head>
 <body>
@@ -54,34 +363,82 @@
     <div class="section">
         <h3>Section 1: Licensee / Owner Details</h3>
         <div class="details-grid">
-            <div><span class="label">Full Name:</span> <span class="value">LADDU MISHRA</span></div>
-            <div><span class="label">Age / DOB:</span> <span class="value">4 Years / 30-03-2022</span></div>
-            <div><span class="label">Gender:</span> <span class="value">Male</span></div>
-            <div><span class="label">Contact:</span> <span class="value">882625XX77</span></div>
-            <div class="full-width"><span class="label">Full Address:</span> <span class="value">House No. 623, 23 Feet Road, Dhumushpur Vaishnav Enclave, Sector 69.</span></div>
+            <div>
+                <span class="label">Full Name:</span> 
+                <span class="value">LADDU MISHRA</span>
+            </div>
+            <div>
+                <span class="label">Age / DOB:</span> 
+                <span class="value">4 Years / 30-03-2022</span>
+            </div>
+            <div>
+                <span class="label">Gender:</span> 
+                <span class="value">Male</span>
+            </div>
+            <div>
+                <span class="label">Contact:</span> 
+                <span class="value">882625XX77</span>
+            </div>
+            <div class="full-width">
+                <span class="label">Full Address:</span> 
+                <span class="value">House No. 623, 23 Feet Road, Dhumushpur Vaishnav Enclave, Sector 69.</span>
+            </div>
         </div>
     </div>
 
     <div class="section">
         <h3>Section 2: Parent / Guardian Details</h3>
         <div class="details-grid">
-            <div><span class="label">Guardian Name:</span> <span class="value"></span></div>
-            <div><span class="label">Contact:</span> <span class="value">9873XXXX77</span></div>
-            <div class="full-width"><span class="label">ID Proof:</span> <span class="value"></span></div>
+            <div>
+                <span class="label">Guardian Name:</span> 
+                <span class="value"></span>
+            </div>
+            <div>
+                <span class="label">Contact:</span> 
+                <span class="value">9873XXXX77</span>
+            </div>
+            <div class="full-width">
+                <span class="label">ID Proof:</span> 
+                <span class="value"></span>
+            </div>
         </div>
     </div>
 
     <div class="section">
         <h3>Section 3: Firearm / Weapon Details</h3>
         <div class="details-grid">
-            <div class="full-width"><span class="label">Weapon Name:</span> <span class="value">Velinor Air Soft Mouser Gun Set (Pack of 2 Long Range Pistols)</span></div>
-            <div><span class="label">Model No:</span> <span class="value">airsoft140</span></div>
-            <div><span class="label">Serial No:</span> <span class="value">24062026</span></div>
-            <div><span class="label">Color:</span> <span class="value">Black</span></div>
-            <div><span class="label">Bullet Size:</span> <span class="value">6mm</span></div>
-            <div class="full-width"><span class="label">Ammunition:</span> <span class="value">300 Standard BBs + 1000 Additional BBs (Special Vartika Approval)</span></div>
-            <div><span class="label">Purchase Date:</span> <span class="value">21/06/2026</span></div>
-            <div><span class="label">Purchased From:</span> <span class="value">Vrindavan Barsana (Vartika Approval)</span></div>
+            <div class="full-width">
+                <span class="label">Weapon Name:</span> 
+                <span class="value">Velinor Air Soft Mouser Gun Set (Pack of 2 Long Range Pistols)</span>
+            </div>
+            <div>
+                <span class="label">Model No:</span> 
+                <span class="value">airsoft140</span>
+            </div>
+            <div>
+                <span class="label">Serial No:</span> 
+                <span class="value">24062026</span>
+            </div>
+            <div>
+                <span class="label">Color:</span> 
+                <span class="value">Black</span>
+            </div>
+            <div>
+                <span class="label">Bullet Size:</span> 
+                <span class="value">6mm</span>
+            </div>
+            <div class="full-width">
+                <span class="label">Ammunition:</span> 
+                <span class="value">300 Standard BBs + 1000 Additional BBs (Special Vartika Approval)</span>
+            </div>
+            <div>
+                <span class="label">Purchase Date:</span> 
+                <span class="value">21/06/2026</span>
+            </div>
+            <div>
+                <span class="label">Purchased From:</span> 
+                <span class="value">Vrindavan Barsana (Vartika Approval)</span>
+            </div>
         </div>
     </div>
 
@@ -106,7 +463,7 @@
 
     <div class="section">
         <h3>Section 5: Declaration & Signatures</h3>
-        <p style="font-size: 13px;">I, the parent/guardian, hereby declare that the above information is true and I agree to all safety terms mentioned in Section 4.</p>
+        <p style="font-size: 12px;">I, the parent/guardian, hereby declare that the above information is true and I agree to all safety terms mentioned in Section 4.</p>
         
         <div class="signatures">
             <div class="sig-box">
@@ -117,7 +474,7 @@
                 <div class="stamp-container">
                     <div class="stamp">
                         <div class="inner-circle">
-                            BARSANA<br>WEAPONRY<br>AUTHORITY<br>★ APPROVED ★
+                            BARSANA<br>TOY WEAPONRY<br>AUTHORITY<br>★ APPROVED ★
                         </div>
                     </div>
                 </div>
